@@ -2,7 +2,7 @@ import bg from "../assets/retro.jpg"
 
 const Fourth = () => {
     return (
-        <div className="text-white bg-black px-2">
+        <div className="text-white fourth-bg bg-black px-2">
             <div className="mx-auto container py-16">
                 <div className="flex justify-around gap-3 flex-col md:flex-row items-center">
 

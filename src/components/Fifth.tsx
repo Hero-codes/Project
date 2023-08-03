@@ -1,4 +1,4 @@
-import bg from "../assets/cave.jpg"
+import himanshu from "../assets/himanshu.jpeg"
 
 const Fifth = () => {
     return (
@@ -19,7 +19,7 @@ const Fifth = () => {
                     </div>
 
                     <div className="w-full md:w-2/6 mt-5 md:mt-0">
-                        <img src={bg} alt="..." />
+                        <img src={himanshu} alt="..." />
                     </div>
                 </div>
             </div>

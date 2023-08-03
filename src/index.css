@@ -17,8 +17,9 @@
 }
 
 .fourth-bg {
-    background-image: url("assets/studio.jpg");
+    background-image: url("assets/about-img.jpeg");
     background-color: rgba(16, 2, 48, 0.7);
+    overflow-y: auto;
     padding: 100px 0;
     background-blend-mode: darken;
 }

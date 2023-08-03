@@ -1,4 +1,5 @@
 import bg from "../assets/Transients2.png"
+import himanshu from "../assets/himanshu.jpeg"
 
 const First = () => {
     return (
