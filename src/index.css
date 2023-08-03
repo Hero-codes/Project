@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.second-bg {
+    background-image: url("assets/blender.png");
+    background-color: rgba(16, 2, 48, 0.7);
+    padding: 100px 0;
+    background-blend-mode: darken;
+}
+
+.third-bg {
+    background-image: url("assets/studio.jpg");
+    background-color: rgba(16, 2, 48, 0.7);
+    padding: 100px 0;
+    background-blend-mode: darken;
+}
+
+.fourth-bg {
+    background-image: url("assets/studio.jpg");
+    background-color: rgba(16, 2, 48, 0.7);
+    padding: 100px 0;
+    background-blend-mode: darken;
+}
+
+.fifth-bg {
+    background-image: url("assets/cave.jpg");
+    background-color: rgba(16, 2, 48, 0.7);
+    padding: 100px 0;
+    background-blend-mode: darken;
+}
