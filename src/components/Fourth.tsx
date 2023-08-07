@@ -1,10 +1,32 @@
 import bg from "../assets/retro.jpg"
+import { useRef } from "react";
+import { useInView, motion } from "framer-motion";
 
 const Fourth = () => {
+
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true });
+
     return (
-        <div className="text-white fourth-bg bg-black px-2">
+        <div
+            ref={ref}
+            style={{
+                transform: isInView ? "none" : "translateX(-200px)",
+                opacity: isInView ? 1 : 0,
+                transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s"
+            }}
+            className="text-white fourth-bg bg-black px-2">
             <div className="mx-auto container py-16">
-                <div className="flex justify-around gap-3 flex-col md:flex-row items-center">
+                <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.5 }}
+                    transition={{ duration: 0.5 }}
+                    variants={{
+                        hidden: { opacity: 0, x: -50 },
+                        visible: { opacity: 1, x: 0 },
+                    }}
+                    className="flex justify-around gap-3 flex-col md:flex-row items-center">
 
                     <div className="w-full md:w-2/6">
                         <img src={bg} alt="..." />
@@ -38,7 +60,7 @@ const Fourth = () => {
                             </ul>
                         </div>
                     </div>
-                </div>
+                </motion.div>
 
                 <div className="md:hidden mt-5">
                     <ul className="flex flex-col gap-10">

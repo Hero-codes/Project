@@ -1,8 +1,30 @@
+import { useRef } from "react";
+import { useInView, motion } from "framer-motion";
+
 const Second = () => {
+
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true });
+
     return (
-        <div className="text-white second-bg bg-cover px-2">
+        <div
+            ref={ref}
+            style={{
+                transform: isInView ? "none" : "translateX(-200px)",
+                opacity: isInView ? 1 : 0,
+                transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s"
+            }}
+            className="text-white second-bg bg-cover px-2">
             <div className="mx-auto max-w-5xl py-16 px-2">
-                <div className="flex flex-col gap-10">
+                <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.5 }}
+                    transition={{ duration: 0.5 }}
+                    variants={{
+                        hidden: { opacity: 0, x: -50 },
+                        visible: { opacity: 1, x: 0 },
+                    }} className="flex flex-col gap-10">
                     <h1 className="text-5xl font-semibold text-center md:text-left">My Design Philosophy</h1>
                     <p className="text-lg font-semibold max-w-3xl text-center md:text-left">My design philosophy is centered around creating immersive experiences for players. From the concept phase to the final product, I always keep the player in mind and strive to create games that are both engaging and fun.</p>
 
@@ -54,7 +76,7 @@ const Second = () => {
                             <span>Cloud Computing</span>
                         </div>
                     </div>
-                </div>
+                </motion.div>
             </div>
         </div>
     )

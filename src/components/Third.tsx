@@ -3,11 +3,34 @@ import conceptCreating from "../assets/modified-car.jpg";
 import studiPhotography from "../assets/studio-phorography.jpeg";
 import structureModdelling from "../assets/structure-modelling.jpg";
 
+import { useRef } from "react";
+import { useInView, motion } from "framer-motion";
+
 const Third = () => {
+
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true });
+
     return (
-        <div className='third-bg text-white bg-cover'>
+        <div
+            ref={ref}
+            style={{
+                transform: isInView ? "none" : "translateX(-200px)",
+                opacity: isInView ? 1 : 0,
+                transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s"
+            }}
+            className='third-bg text-white bg-cover'>
             <div className='mx-auto container px-2'>
-                <div className='flex flex-col space-y-7 items-center'>
+                <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.5 }}
+                    transition={{ duration: 0.8 }}
+                    variants={{
+                        hidden: { opacity: 0, x: -50 },
+                        visible: { opacity: 1, x: 0 },
+                    }}
+                    className='flex flex-col space-y-7 items-center'>
                     <h1 className='font-semibold text-4xl'>Selected Projects and Case Studies</h1>
                     <p className='text-lg'>Here are some of the games I've designed and developed:</p>
 
@@ -43,7 +66,7 @@ const Third = () => {
 
 
                     </div>
-                </div>
+                </motion.div>
             </div>
         </div>
     )

@@ -1,11 +1,29 @@
 import bg from "../assets/Transients2.png"
-import himanshu from "../assets/himanshu.jpeg"
+import { useRef } from "react";
+import { useInView, motion } from "framer-motion";
 
 const First = () => {
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true });
+
     return (
-        <div
+        <div ref={ref}
+            style={{
+                transform: isInView ? "none" : "translateX(-200px)",
+                opacity: isInView ? 1 : 0,
+                transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s"
+            }}
             className="bg-black text-white py-16 bg-cover">
-            <div className="mx-auto container py-5 px-2">
+            <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.8 }}
+                variants={{
+                    hidden: { opacity: 0, x: -50 },
+                    visible: { opacity: 1, x: 0 },
+                }}
+                className="mx-auto container py-5 px-2">
 
                 <div className="flex gap-10 items-center flex-col md:flex-row w-10/12 mx-auto">
                     <div className="flex flex-col space-y-7 px-2">
@@ -17,7 +35,7 @@ const First = () => {
                         <img src={bg} alt="" />
                     </div>
                 </div>
-            </div>
+            </motion.div>
         </div>
     )
 }
