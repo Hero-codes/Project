@@ -1,8 +1,18 @@
 import bg from "../assets/Transients2.png"
+import { useRef } from "react";
+import { useInView } from "framer-motion";
 
 const First = () => {
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true });
+
     return (
-        <div
+        <div ref={ref}
+            style={{
+                transform: isInView ? "none" : "translateX(-200px)",
+                opacity: isInView ? 1 : 0,
+                transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s"
+            }}
             className="bg-black text-white py-16 bg-cover">
             <div className="mx-auto container py-5 px-2">
 

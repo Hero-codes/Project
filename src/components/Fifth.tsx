@@ -1,8 +1,20 @@
 import himanshu from "../assets/himanshu.jpeg"
+import { useRef } from "react";
+import { useInView } from "framer-motion";
 
 const Fifth = () => {
+
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true });
+
     return (
         <div
+            ref={ref}
+            style={{
+                transform: isInView ? "none" : "translateX(-200px)",
+                opacity: isInView ? 1 : 0,
+                transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s"
+            }}
             className="text-white fifth-bg bg-cover px-2">
             <div className="mx-auto container py-16">
                 <div className="flex justify-center gap-5 flex-col md:flex-row items-center">

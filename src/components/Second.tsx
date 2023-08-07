@@ -1,6 +1,20 @@
+import { useRef } from "react";
+import { useInView } from "framer-motion";
+
 const Second = () => {
+
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true });
+
     return (
-        <div className="text-white second-bg bg-cover px-2">
+        <div
+            ref={ref}
+            style={{
+                transform: isInView ? "none" : "translateX(-200px)",
+                opacity: isInView ? 1 : 0,
+                transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s"
+            }}
+            className="text-white second-bg bg-cover px-2">
             <div className="mx-auto max-w-5xl py-16 px-2">
                 <div className="flex flex-col gap-10">
                     <h1 className="text-5xl font-semibold text-center md:text-left">My Design Philosophy</h1>

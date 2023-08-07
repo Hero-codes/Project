@@ -1,8 +1,21 @@
 import bg from "../assets/retro.jpg"
+import { useRef } from "react";
+import { useInView } from "framer-motion";
 
 const Fourth = () => {
+
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true });
+
     return (
-        <div className="text-white fourth-bg bg-black px-2">
+        <div
+            ref={ref}
+            style={{
+                transform: isInView ? "none" : "translateX(-200px)",
+                opacity: isInView ? 1 : 0,
+                transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s"
+            }}
+            className="text-white fourth-bg bg-black px-2">
             <div className="mx-auto container py-16">
                 <div className="flex justify-around gap-3 flex-col md:flex-row items-center">
 
